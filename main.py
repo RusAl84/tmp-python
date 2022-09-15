@@ -113,6 +113,7 @@ def example_work_QuickSort():
     ast.push(5)
     ast.display()
     print("sorted: ")
+    size = ast.getSize()
     quicksort(ast, 0, size - 1)
     ast.display()
 
