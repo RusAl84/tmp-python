@@ -1,11 +1,11 @@
+#https://www.geeksforgeeks.org/stack-in-python/
 
 class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
 
-
-class StackMas:
+class StackPtr:
     # Initializing a stack.
     # Use a dummy node, which is
     # easier for handling edge cases.
@@ -32,7 +32,6 @@ class StackMas:
 
     # Get the top item of the stack
     def peek(self):
-
         # Sanitary check to see if we
         # are peeking an empty stack.
         if self.isEmpty():
@@ -54,3 +53,14 @@ class StackMas:
         self.head.next = self.head.next.next
         self.size -= 1
         return remove.value
+
+    def display(self):
+        st = StackPtr()
+        size = self.getSize()
+        for item in range(size):
+            st.push(self.peek())
+            self.pop()
+        for item in range(size):
+            print(st.peek())
+            self.push(st.peek())
+            st.pop()
