@@ -22,6 +22,14 @@ class ADTgrapth:
         self.edge_labels[label] = (startV, endV)
 
     # FIRST(v) - возвращает индекс первой вершины, смежной с вершиной v. Если вершина v не имеет смежных вершин, то возвращается "нулевая" вершина ?.
+    def first(self, v):
+        result = ""
+        for item in self.edges:
+            if item[0] == v:
+                result = item[1]
+                break;
+        return result
+
     # NEXT(v, i)- возвращает индекс вершины, смежной с вершиной v, следующий за индексом i. Если i — это индекс последней вершины, смежной с вершиной v, то возвращается ?.
     # VERTEX(v, i) - возвращает вершину с индексом i из множества вершин, смежных с v.
     # DEL_V(<имя>) - удалить УЗЕЛ
@@ -39,7 +47,7 @@ class ADTgrapth:
             font_color='red'
         )
         nx.draw_networkx_labels(self.g, pos, self.node_labels, font_size=16, font_color='r')
-        nx.draw(self.g, with_labels=True, )
+        nx.draw_shell(self.g, with_labels=True, )
         # draw_circular(G, keywords) : This gives circular layout of the graph G.
         # draw_planar(G, keywords) :] This gives a planar layout of a planar networkx graph G.
         # draw_random(G, keywords) : This gives a random layout of the graph G.
@@ -50,8 +58,7 @@ class ADTgrapth:
         plt.show()
 
 
-if __name__ == "__main__":
-    g = ADTgrapth()
+def example_graph_a_cat(g):
     g.addV('A')
     g.addV('B')
     g.addV('C')
@@ -73,4 +80,10 @@ if __name__ == "__main__":
     g.addE('H', 'L')
     g.addE('H', 'M')
 
+
+if __name__ == "__main__":
+    g = ADTgrapth()
+    example_graph_a_cat(g)
+
+    print(g.first("A")) #test first function
     g.draw()
