@@ -2,7 +2,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 
 
-def ellerov_cicle():
+def task(inc, start=1):
     # Смежность вершин
     # inc = {
     #     1: [2, 8],
@@ -15,13 +15,7 @@ def ellerov_cicle():
     #     8: [1, 2, 3, 7],
     #     9: [4],
     # }
-    inc = {
-        1: [2],
-        2: [3],
-        3: [5,3],
-        4: [4],
-        5: [1],
-    }
+
 
     # visited = set()  # Посещена ли вершина?
     visited = []  # Посещена ли вершина?
@@ -31,15 +25,13 @@ def ellerov_cicle():
         draw(inc, visited)
         if v in visited:  # Если вершина уже посещена, выходим
             return
-
         visited.append(v)  # Посетили вершину v
         for i in inc[v]:  # Все смежные с v вершины
             if not i in visited:
                 dfs(i)
 
-    start = 1
     dfs(start)  # start - начальная вершина обхода
-    draw(inc, visited)
+    return draw(inc, visited)
     # print(visited)
 
 
@@ -63,9 +55,10 @@ def draw(inc, visited):
     nx.draw_shell(G, node_color=color_map, with_labels=True)
     # plt.savefig("filename.png")
     from time import sleep
-    sleep(1)
+    # sleep(0.1)
     plt.show()
     print(f"sequence: {visited}")
+    return visited
 
 
 def test():
@@ -86,4 +79,27 @@ def test():
 
 
 if __name__ == "__main__":
-    ellerov_cicle()
+
+    inc = {
+        1: [2, 1],
+        2: [3],
+        3: [5, 3],
+        4: [4],
+        5: [1],
+        6: [6],
+        7: [7],
+    }
+
+    af = []
+
+    for v in range(1, len(inc)+1):
+        print(f"{v}")
+        l = task(inc,v)
+        l = sorted(l)
+        af.append(l)
+    print(af)
+    vivo = set()
+    for item in af:
+        vivo.add(str(item))
+    print(vivo)
+    print(len(vivo))
