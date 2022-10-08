@@ -51,14 +51,14 @@ if __name__ == "__main__":
         7: [7],
     }
     print(inc)
-    # af = []
-    # for v in range(1, len(inc) + 1):
-    #     l = task(inc, v)
-    #     l = sorted(l)
-    #     af.append(l)
-    # print(af)
-    # vivo = set()
-    # for item in af:
-    #     vivo.add(str(item))
-    # print(vivo)
-    # print(f"Количество связных компонент: {len(vivo)}")
+    af = []
+    for v in range(1, len(inc) + 1):
+        l = task(inc, v)
+        l = sorted(l)
+        af.append(l)
+    print(af)
+    vivo = set()
+    for item in af:
+        vivo.add(str(item))
+    print(vivo)
+    print(f"Количество связных компонент: {len(vivo)}")
