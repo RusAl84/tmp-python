@@ -2,28 +2,9 @@ import networkx as nx
 import matplotlib.pyplot as plt
 
 
-def ellerov_cicle():
-    # Смежность вершин
-    # inc = {
-    #     1: [2, 8],
-    #     2: [1, 3, 8],
-    #     3: [2, 4, 8],
-    #     4: [3, 7, 9],
-    #     5: [6, 7],
-    #     6: [5],
-    #     7: [4, 5, 8],
-    #     8: [1, 2, 3, 7],
-    #     9: [4],
-    # }
-    inc = {
-        1: [2],
-        2: [3],
-        3: [5,3],
-        4: [4],
-        5: [1],
-    }
+def task(inc, start=1):
 
-    # visited = set()  # Посещена ли вершина?
+
     visited = []  # Посещена ли вершина?
 
     # Поиск в глубину - ПВГ (Depth First Search - DFS)
@@ -31,16 +12,14 @@ def ellerov_cicle():
         draw(inc, visited)
         if v in visited:  # Если вершина уже посещена, выходим
             return
-
         visited.append(v)  # Посетили вершину v
         for i in inc[v]:  # Все смежные с v вершины
             if not i in visited:
                 dfs(i)
 
-    start = 1
     dfs(start)  # start - начальная вершина обхода
     draw(inc, visited)
-    # print(visited)
+
 
 
 def draw(inc, visited):
@@ -86,4 +65,25 @@ def test():
 
 
 if __name__ == "__main__":
-    ellerov_cicle()
+    # Смежность вершин
+    # inc = {
+    #     1: [2, 8],
+    #     2: [1, 3, 8],
+    #     3: [2, 4, 8],
+    #     4: [3, 7, 9],
+    #     5: [6, 7],
+    #     6: [5],
+    #     7: [4, 5, 8],
+    #     8: [1, 2, 3, 7],
+    #     9: [4],
+    # }
+    inc = {
+        1: [2],
+        2: [3],
+        3: [5,3],
+        4: [4],
+        5: [1],
+        6: [6],
+        7: [7],
+    }
+    task(inc, 1)

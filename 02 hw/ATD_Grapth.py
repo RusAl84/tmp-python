@@ -6,6 +6,7 @@ class ADTgrapth:
     def __init__(self):
         # https://www.geeksforgeeks.org/python-visualize-graphs-generated-in-networkx-using-matplotlib/
         self.g = nx.Graph()
+        self.nodes = []
         self.edges = []
         self.edge_labels = {}
         self.node_labels = {}
