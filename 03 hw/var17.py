@@ -11,30 +11,28 @@ class BST:
         self.root = None
         self.data = val
 
-
-
-    def binary_insert(self, node):
+    def binary_insert(self, root, node):
         if self.root is None:
             self.root = node
         else:
             if self.root.data > node.data:
-                if self.root.l_child is None:
-                    self.root.l_child = node
+                if root.l_child is None:
+                    root.l_child = node
                 else:
-                    binary_insert(self.root.l_child, node)
+                    self.binary_insert(root.l_child, node)
             else:
-                if self.root.r_child is None:
-                    self.root.r_child = node
+                if root.r_child is None:
+                    root.r_child = node
                 else:
-                    binary_insert(self.root.r_child, node)
+                    self.binary_insert(root.r_child, node)
 
-    # def in_order_print(self, root):
-    #     if not root:
-    #         return
-    #     in_order_print(root.l_child)
-    #     print(root.data)
-    #     in_order_print(self, root.r_child)
-    #
+    def in_order_print(self, root):
+        if not root:
+            return
+        self.in_order_print(root.l_child)
+        print(root.data)
+        self.in_order_print(root.r_child)
+
     # def pre_order_print(self, root):
     #     if not root:
     #         return
@@ -42,21 +40,62 @@ class BST:
     #     pre_order_print(root.l_child)
     #     pre_order_print(root.r_child)
 
+    def edge_list(self, root):
+        elist= []
+        if not root:
+            return
+        e = self.edge_list(root.l_child)
+        if e is not None:
+            for item in e:
+                if len(item)>0:
+                    elist.append(item)
+        print(root.data)
+        edge=[]
+        if root.l_child is not None:
+            edge = (root.data, root.l_child.data)
+        elist.append(edge)
+        if root.r_child is not None:
+            edge = (root.data, root.r_child.data)
+        elist.append(edge)
+        e = self.edge_list(root.r_child)
+        if e is not None:
+            for item in e:
+                if len(item) > 0:
+                    elist.append(item)
+        return elist
 
-r = BST(3)
-r.binary_insert(BST(7))
-r.binary_insert(BST(1))
-r.binary_insert(BST(5))
+    def draw(self):
+        # G = nx.Graph()
+        elist = self.edge_list(self.root)
+        # for item in elist:
+        print(elist)
 
+
+
+r = BST("root")
+r.binary_insert(r.root, BST(3))
+r.binary_insert(r.root, BST(7))
+r.binary_insert(r.root, BST(1))
+r.binary_insert(r.root, BST(5))
+r.binary_insert(r.root, BST(9))
 #    3
 #  /   \
 # 1     7
-#      /
-#     5
+#        \
+#         9
+#        /
+#       5
 
+# print(r.edge_list(r.root))
+r.draw()
+
+# r = BST("ROOT")
+# for i in range(10):
+#     import random
+#     r.binary_insert(r.root, BST(random.randint(2, 20)))
 
 # print("in order:")
-# in_order_print(r)
+# r.in_order_print(r.root)
 #
 # print("pre order")
 # pre_order_print(r)
