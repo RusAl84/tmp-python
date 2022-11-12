@@ -70,18 +70,19 @@ class BST:
     def draw(self):
         G = nx.DiGraph()
         elist = self.edge_list(self.root)
+        print(elist)
         G.add_edges_from(elist)
         nx.draw_circular(G, with_labels=True)
         # plt.savefig("filename.png")
         plt.show()
 
 
-# r = BST("root")
-# r.binary_insert(r.root, BST(3))
-# r.binary_insert(r.root, BST(7))
-# r.binary_insert(r.root, BST(1))
-# r.binary_insert(r.root, BST(5))
-# r.binary_insert(r.root, BST(9))
+r = BST("root")
+r.binary_insert(r.root, BST(3))
+r.binary_insert(r.root, BST(7))
+r.binary_insert(r.root, BST(1))
+r.binary_insert(r.root, BST(5))
+r.binary_insert(r.root, BST(9))
 #    3
 #  /   \
 # 1     7
@@ -91,18 +92,18 @@ class BST:
 #           9
 
 
-r = BST("ROOT")
+# r = BST("ROOT")
 
-import random
-nodes = set()
-for i in range(10):
-    nodes.add(i)
-nodes = list(nodes)
-for i in range(len(nodes)):
-    c = random.choice(nodes)
-    nodes.remove(c)
-    print(c)
-    r.binary_insert(r.root, BST(c))
+# import random
+# nodes = set()
+# for i in range(10):
+#     nodes.add(i)
+# nodes = list(nodes)
+# for i in range(len(nodes)):
+#     c = random.choice(nodes)
+#     nodes.remove(c)
+#     print(c)
+#     r.binary_insert(r.root, BST(c))
 
 
 r.draw()
