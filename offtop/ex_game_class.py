@@ -335,21 +335,21 @@ if __name__ == "__main__":
     sound = Sounds()
     sound.playSound()
     mihalich = Unit("МИХАЛЫЧ", 100)
-    kiruha = Unit("КИРЮХА", 46)
+    vitaluha = Unit("ВИТАЛЮХА", 100)
     boss = Boss("ЕГЭ")
 
-    while mihalich.isLive() and kiruha.isLive() and boss.isLive():
+    while mihalich.isLive() and vitaluha.isLive() and boss.isLive():
         print(mihalich)
         print(boss)
-        print(kiruha)
+        print(vitaluha)
 
         import random
         r = random.randint(1, 4)
         if r == 1:
-            kiruha.attack(boss)
+            vitaluha.attack(boss)
         elif r == 2:
             mihalich.attack(boss)
         elif r == 3:
             boss.attack(mihalich)
         elif r == 4:
-            boss.attack(kiruha)
+            boss.attack(vitaluha)
