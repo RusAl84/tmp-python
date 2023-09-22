@@ -23,8 +23,10 @@ def bubbleSort(arr):
             break
     return nop
 
-def getData(n):
-    numbers = random.randrange(n)
+def genData(n):
+    numbers=[]
+    for i   in range(n):
+        numbers.append(random.randrange(10000))
     return numbers
 
 def printArr(arr):
@@ -36,7 +38,7 @@ if __name__ == "__main__":
 
     presets = [500, 1000, 3000, 5000, 8000, 10000, 20000, 30000]
     for preset in presets:
-        arr = getData(preset)
+        arr = genData(preset)
         nop  = bubbleSort(arr)
         print(f"N={preset} nop={nop}")
     # printArr(arr)
